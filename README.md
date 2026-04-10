@@ -1,31 +1,38 @@
-# SQL Data Cleaning: World Layoffs Analysis
+# SQL Exploratory Data Analysis: Global Layoffs Trends
 
 ## The Problem
-Raw layoffs data contained duplicate records, inconsistent industry classifications, and formatting errors that made accurate trend analysis impossible. Analysts couldn't trust the numbers for strategic workforce planning.
+After cleaning the layoffs data, stakeholders needed to understand: Which companies, industries, and regions were hit hardest? When did the wave peak? What patterns explain why some companies failed completely while others survived?
 
 ## Why It Mattered
-With tech layoffs surging in 2022, companies, investors, and job seekers needed reliable data to understand market patterns. Dirty data led to misleading conclusions about which industries and regions were most affected.
+In 2022's volatile job market, job seekers needed to target stable industries, investors wanted risk signals, and companies needed competitive intelligence. Raw numbers without context didn't answer the critical question: **Who was most at risk?**
 
-## What I Did
-- Identified and removed 100+ duplicate records using ROW_NUMBER() and partitioning
-- Standardized inconsistent industry names (e.g., "Crypto Currency" → "Crypto")
-- Fixed malformed country entries ("United States." → "United States")
-- Converted string dates to proper DATE format for time-series analysis
-- Populated missing industry values by cross-referencing matching company records
-- Removed 300+ rows with null layoff numbers that skewed aggregate calculations
+## What I Analyzed
+- **Complete failures:** 100% layoffs (startups that shut down entirely)
+- **Scale of impact:** Total layoffs by company, location, industry, and funding stage
+- **Timeline patterns:** Year-over-year trends and monthly rolling totals
+- **Risk indicators:** Correlation between funding raised and survival rate
 
-## Key Insight
-Data quality issues were hiding the true scale of layoffs — duplicates inflated counts by ~8%, while missing industry labels made sector analysis unreliable.
+## Key Insights
+
+| Finding | Impact |
+|---------|--------|
+| **Amazon, Google, Meta** led in total layoffs (big tech restructuring) | Massive scale ≠ failure; these companies survived |
+| **Startups with 100% layoffs** raised $2B+ (e.g., Quibi) | Funding doesn't guarantee survival; business model matters |
+| **Consumer and Retail** industries dominated top layoff lists | Post-pandemic correction in over-hired sectors |
+| **2022 peak** came in specific months with rolling totals climbing steadily | Timing matters for job seekers and hiring plans |
+| **Post-IPO and Acquired companies** had highest layoff totals | Late-stage companies most vulnerable to market shifts |
 
 ## The Decision
-**Delivered a clean, analysis-ready dataset** that enables accurate trend analysis and trustworthy reporting on global workforce reductions.
+**Recommended strategic workforce planning based on stage and industry risk profiles** — not just company size. Job seekers should prioritize early-stage startups with solid runway, while investors should scrutinize late-stage companies with high burn rates.
 
 ## Technical Skills
-- Advanced SQL: CTEs, window functions, JOINs
-- Data validation and standardization
-- Pattern recognition in messy real-world data
+- Complex CTEs and window functions (DENSE_RANK, rolling totals)
+- Time-series analysis with date manipulation
+- Multi-level aggregation and trend identification
+- Translating raw queries into business narrative
 
 ## Tools Used
 - MySQL
-- Kaggle dataset (World Layoffs 2022)
+- Cleaned dataset from previous SQL project
+
 
